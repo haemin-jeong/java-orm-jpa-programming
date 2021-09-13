@@ -15,9 +15,9 @@ public class Member extends BaseEntity {
     @Column(name = "member_id")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Address address;
 
     /*
     필요하면 Member 조회하고 Order를 따로 조회하는 것이 좋다.
@@ -26,4 +26,5 @@ public class Member extends BaseEntity {
      */
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
 }
